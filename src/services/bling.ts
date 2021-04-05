@@ -31,7 +31,7 @@ export default {
 
                 return false
             }
-
+            
             return true
         } catch (error) {
             console.log(error)
