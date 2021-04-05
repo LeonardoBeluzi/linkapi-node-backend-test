@@ -8,3 +8,5 @@ const SyncSchema = new mongoose.Schema({
 })
 
 const Sync = mongoose.model('Sync', SyncSchema)
+
+export default Sync

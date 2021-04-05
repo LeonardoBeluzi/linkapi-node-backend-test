@@ -13,3 +13,5 @@ const DealSchema = new mongoose.Schema({
 })
 
 const Deal = mongoose.model('Deal', DealSchema)
+
+export default Deal
