@@ -4,6 +4,7 @@ import Sync from '../models/Sync'
 import registerDeal from '../functions/registerDeals'
 
 export default {
+    //Retrieve all Deals from the database
     async show(request: Request, response: Response, next: NextFunction) {
         try {
             const data = await Deal.find()
@@ -20,6 +21,7 @@ export default {
         }
     },
 
+    //Start Deal synchronization.
     async syncData(request: Request, response: Response, next: NextFunction) {
         let lastId: Number = 0
 

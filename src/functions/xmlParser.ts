@@ -2,24 +2,23 @@ import { j2xParser } from 'fast-xml-parser'
 
 export default {
     piledriveDataToXML(data: any) {
-        const itemObject = {
-            item: {
-                codigo: 'teste',
-                descricao: 'Produto Teste',
-                qtde: data.products_count,
-                vlr_unit: data.value / data.products_count
-            }
-        }
-
+        const date = new Date(data.add_time).toLocaleDateString()
         const xmlObject = {
             pedido: {
                 cliente: {
                     nome: data.person_id.name
                 },
-                data: data.add_time,
+                data: date,
                 numero: data.id,
                 numero_loja: data.id,
-                itens: [itemObject]
+                itens: [{
+                    item: {
+                        codigo: 'teste',
+                        descricao: 'Produto Teste',
+                        qtde: data.products_count,
+                        vlr_unit: data.value / data.products_count
+                    }
+                }]
             }
         }
 
