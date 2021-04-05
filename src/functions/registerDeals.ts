@@ -4,6 +4,6 @@ import xmlParser from './xmlParser'
 
 export default {
     async syncData(lastId: Number) {
-                       
+                     
     }
 }
