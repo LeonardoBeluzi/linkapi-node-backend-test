@@ -1,6 +1,11 @@
 import mongoose from 'mongoose'
 
-const DealSchema = new mongoose.Schema({
+export interface IDeal extends mongoose.Document {
+    date: Date;
+    value: Number;
+}
+
+export const DealSchema = new mongoose.Schema({
     date: {
         type: Date,
         require: true
@@ -12,6 +17,6 @@ const DealSchema = new mongoose.Schema({
     }
 })
 
-const Deal = mongoose.model('Deal', DealSchema)
+const Deal = mongoose.model<IDeal>('Deal', DealSchema)
 
 export default Deal
