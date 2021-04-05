@@ -7,12 +7,12 @@ import Deal from '../models/Deal'
 export default {
     async syncData(lastId: Number) {
         //get all deals from piledrive
-        const piledriveData = await piledrive.getDeals(0)
+        const piledriveData = await piledrive.getDeals(lastId)
+        
+        if (piledriveData.length === 0) return
 
         //lock update requests
-        if (piledriveData.length > 0) {
-            await Sync.updateOne(null, { updating: true }, { upsert: true })
-        }
+        await Sync.updateOne(null, { updating: true }, { upsert: true })
 
         try {
             for (const data of piledriveData) {
@@ -27,7 +27,7 @@ export default {
 
                 //stop sync on error
                 if (success === null) break
-                
+
                 //ignore existing deal
                 if (success === false) continue
 
