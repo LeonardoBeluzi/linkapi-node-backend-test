@@ -18,7 +18,7 @@ export default {
             api_token,
             status: 'won',
             start: 0,
-            sort: 'won_time DESC'
+            sort: 'id ASC'
         }
 
         try {
