@@ -12,7 +12,7 @@ const request = axios.create({
 })
 
 export default {
-    //https://developers.pipedrive.com/docs/api/v1/#!/Deals/getDeals
+    //https://ajuda.bling.com.br/hc/pt-br/articles/360047064693-POST-pedido
     async storeDeals(xml: String) {
         const params = {
             apikey,
