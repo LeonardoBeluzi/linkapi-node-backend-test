@@ -21,31 +21,28 @@ export default {
     },
 
     async syncData(request: Request, response: Response, next: NextFunction) {
+        let lastId: Number = 0
+
         try {
             const data = await Sync.findOne()
 
-            if (!data) {
-                registerDeal.syncData(0)   
+            if (data) {
+                if (data.updating) {
+                    return response.send({
+                        success: false,
+                        message: 'Processing data, try again later.'
+                    })
+                }
 
-                return response.send({
-                    success: true,
-                    message: 'Processing data.'
-                })             
+                lastId = data.id
             }
 
-            if (data.updating) {
-                return response.send({
-                    success: false,
-                    message: 'Processing data, try again later.'
-                })
-            }
-
-            registerDeal.syncData(data.id)
+            registerDeal.syncData(lastId)   
 
             return response.send({
                 success: true,
                 message: 'Processing data.'
-            })             
+            }) 
         } catch (error) {
             next(error)
         }
