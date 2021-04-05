@@ -2,6 +2,7 @@ import 'dotenv/config'
 
 import express from 'express'
 import router from './routes'
+import helmet from 'helmet'
 import errorHandler from './middlewares/errorHandler'
 import database from '../src/database/connection'
 
@@ -11,6 +12,7 @@ const port = process.env.PORT || 8000
 
 //Defining middlewares
 api.use(express.json())
+api.use(helmet())
 api.use(router)
 api.use(errorHandler)
 
