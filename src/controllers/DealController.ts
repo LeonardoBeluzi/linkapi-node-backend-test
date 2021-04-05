@@ -30,7 +30,7 @@ export default {
                 if (data.updating) {
                     return response.send({
                         success: false,
-                        message: 'Processing data, try again later.'
+                        message: 'Synchronizing data, try again later.'
                     })
                 }
 
@@ -41,7 +41,7 @@ export default {
 
             return response.send({
                 success: true,
-                message: 'Processing data.'
+                message: 'Synchronization started.'
             }) 
         } catch (error) {
             next(error)
